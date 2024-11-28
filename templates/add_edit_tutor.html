@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ 'Editar Tutor' if tutor else 'Adicionar Tutor' }}</h2>
+<form method="post">
+    <label>Nome:</label>
+    <input type="text" name="name" value="{{ tutor[1] if tutor else '' }}" required>
+    <label>Contato:</label>
+    <input type="text" name="contact" value="{{ tutor[2] if tutor else '' }}" required>
+    <button type="submit">Salvar</button>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Tutores</h2>
+<a href="{{ url_for('add_tutor') }}" class="btn">Adicionar Tutor</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Contato</th>
+        <th>Ações</th>
+    </tr>
+    {% for tutor in tutors %}
+    <tr>
+        <td>{{ tutor[0] }}</td>
+        <td>{{ tutor[1] }}</td>
+        <td>{{ tutor[2] }}</td>
+        <td>
+            <a href="{{ url_for('edit_tutor', id=tutor[0]) }}">Editar</a> |
+            <a href="{{ url_for('delete_tutor', id=tutor[0]) }}" onclick="return confirm('Tem certeza?')">Excluir</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

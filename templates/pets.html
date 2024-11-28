@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Pets</h2>
+<a href="{{ url_for('add_pet') }}" class="btn">Adicionar Pet</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Espécie</th>
+        <th>Idade</th>
+        <th>Tutor</th>
+        <th>Ações</th>
+    </tr>
+    {% for pet in pets %}
+    <tr>
+        <td>{{ pet[0] }}</td>
+        <td>{{ pet[1] }}</td>
+        <td>{{ pet[2] }}</td>
+        <td>{{ pet[3] }}</td>
+        <td>{{ pet[4] }}</td>
+        <td>
+            <a href="{{ url_for('edit_pet', id=pet[0]) }}">Editar</a> |
+            <a href="{{ url_for('delete_pet', id=pet[0]) }}" onclick="return confirm('Tem certeza?')">Excluir</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

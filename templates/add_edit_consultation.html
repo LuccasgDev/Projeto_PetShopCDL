@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ 'Editar Consulta' if consultation else 'Adicionar Consulta' }}</h2>
+<form method="post">
+    <label>Pet:</label>
+    <select name="pet_id" required>
+        {% for pet in pets %}
+        <option value="{{ pet[0] }}" {% if consultation and consultation[1] == pet[0] %}selected{% endif %}>
+            {{ pet[1] }}
+        </option>
+        {% endfor %}
+    </select>
+    <label>Data:</label>
+    <input type="date" name="date" value="{{ consultation[2] if consultation else '' }}" required>
+    <label>Descrição:</label>
+    <textarea name="description" required>{{ consultation[3] if consultation else '' }}</textarea>
+    <button type="submit">Salvar</button>
+</form>
+{% endblock %}

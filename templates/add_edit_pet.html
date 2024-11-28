@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ 'Edit Pet' if pet else 'Add Pet' }}</h2>
+<form method="POST">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="{{ pet[1] if pet else '' }}" required>
+    
+    <label for="species">Species</label>
+    <input type="text" id="species" name="species" value="{{ pet[2] if pet else '' }}" required>
+    
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" value="{{ pet[3] if pet else '' }}" required>
+    
+    <label for="tutor_id">Tutor ID</label>
+    <input type="number" id="tutor_id" name="tutor_id" value="{{ pet[4] if pet else '' }}" required>
+    
+    <button type="submit" class="btn">Save</button>
+</form>
+{% endblock %}
